@@ -18,11 +18,11 @@ async function Case01() {
         const passwordElement = await driver.findElement(By.name('password'));
         const confirmPasswordElement = await driver.findElement(By.name('confirmPassword'));
 
-        await slowType(driver, fullnameElement, 'Le Minh Tuan');
-        await slowType(driver, phoneNumberElement, '0889001505');
-        await slowType(driver, emailElement, 'minhtuanledng@gmail.com');
-        await slowType(driver, passwordElement, 'hello123');
-        await slowType(driver, confirmPasswordElement, 'hello12311');
+        await slowType(driver, fullnameElement, 'Doan Vo van Trong');
+        await slowType(driver, phoneNumberElement, '0357407264');
+        await slowType(driver, emailElement, 'trongdn2405@gmail.com');
+        await slowType(driver, passwordElement, '123123');
+        await slowType(driver, confirmPasswordElement, '123123Errors');
         await driver.findElement(By.css('button[type="submit"]')).click();
         let messages = until.elementLocated(By.xpath("//*[contains(text(), 'Passwords do not match - Please try again.')]"))
         if (messages) {
@@ -47,11 +47,11 @@ async function Case02() {
         const passwordElement = await driver.findElement(By.name('password'));
         const confirmPasswordElement = await driver.findElement(By.name('confirmPassword'));
 
-        await slowType(driver, fullnameElement, 'Le Minh Tuan');
-        await slowType(driver, phoneNumberElement, '0889001505');
-        await slowType(driver, emailElement, 'minhtuanledng@gmail.com');
-        await slowType(driver, passwordElement, 'hello123');
-        await slowType(driver, confirmPasswordElement, 'hello123');
+        await slowType(driver, fullnameElement, 'Doan Vo van Trong');
+        await slowType(driver, phoneNumberElement, '0357407264');
+        await slowType(driver, emailElement, 'trongdn2405@gmail.com');
+        await slowType(driver, passwordElement, '123123');
+        await slowType(driver, confirmPasswordElement, '123123');
         await driver.findElement(By.css('button[type="submit"]')).click()
         let messages = until.elementLocated(By.xpath("//*[contains(text(), 'Account registered successfully.')]"))
         if (messages) {
@@ -62,7 +62,7 @@ async function Case02() {
     } catch (error) {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
-        await driver.quit();
+        // await driver.quit();
     }
 }
 
@@ -76,11 +76,11 @@ async function Case03() {
         const passwordElement = await driver.findElement(By.name('password'));
         const confirmPasswordElement = await driver.findElement(By.name('confirmPassword'));
 
-        await slowType(driver, fullnameElement, 'Le Minh Tuan');
-        await slowType(driver, phoneNumberElement, '0889001505');
-        await slowType(driver, emailElement, 'minhtuanledng@gmail.com');
-        await slowType(driver, passwordElement, 'hello123');
-        await slowType(driver, confirmPasswordElement, 'hello123');
+        await slowType(driver, fullnameElement, 'Doan Vo van Trong');
+        await slowType(driver, phoneNumberElement, '0357407264');
+        await slowType(driver, emailElement, 'trongdn2405@gmail.com');
+        await slowType(driver, passwordElement, '123123');
+        await slowType(driver, confirmPasswordElement, '123123');
         await driver.findElement(By.css('button[type="submit"]')).click()
         let messages = until.elementLocated(By.xpath("//*[contains(text(), 'Email already exists - Please try again.')]"))
         if (messages) {
@@ -102,8 +102,8 @@ async function Case04() {
         await driver.get('http://localhost:3000/auth/login');
         const emailElement = await driver.findElement(By.name('email'));
         const passwordElement = await driver.findElement(By.name('password'));
-        await slowType(driver, emailElement, 'minhtuanledng@gmail.com');
-        await slowType(driver, passwordElement, 'hello12345');
+        await slowType(driver, emailElement, 'trongdn2405@gmail.com');
+        await slowType(driver, passwordElement, '123123Error');
         await driver.findElement(By.css('button[type="submit"]')).click()
         let messages = until.elementLocated(By.xpath("//*[contains(text(), 'Login failed - Please check your email and password.')]"))
         if (messages) {
@@ -125,8 +125,8 @@ async function Case05() {
         await driver.get('http://localhost:3000/auth/login');
         const emailElement = await driver.findElement(By.name('email'));
         const passwordElement = await driver.findElement(By.name('password'));
-        await slowType(driver, emailElement, 'minhtuanledng@gmail.com');
-        await slowType(driver, passwordElement, 'hello123');
+        await slowType(driver, emailElement, 'trongdn2405@gmail.com');
+        await slowType(driver, passwordElement, '123123');
         await driver.findElement(By.css('button[type="submit"]')).click()
         let messages = until.elementLocated(By.xpath("//*[contains(text(), 'Welcome back!')]"))
         if (messages) {
