@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import Link from "next/link"
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card"
@@ -38,16 +39,16 @@ export function Header() {
 
       {/* Icon Links */}
       <div className="flex items-center justify-between w-44">
-        <Link href="/" className="hover:opacity-80">
+        <Link href="/" className="hover:opacity-80 hover:bg-slate-300 hover:text-black py-2 px-6 rounded-md">
           <House />
         </Link>
-        <Link href="/market" className="hover:opacity-80">
+        <Link href="/market" className="hover:opacity-80 hover:bg-slate-300 hover:text-black py-2 px-6 rounded-md">
         <Store />
         </Link>
-        <Link href="/test" className="hover:opacity-80">
+        <Link href="/test" className="hover:opacity-80 hover:bg-slate-300 hover:text-black py-2 px-6 rounded-md">
           <Archive />
         </Link>
-        <Link href="/test" className="hover:opacity-80">
+        <Link href="/test" className="hover:opacity-80 hover:bg-slate-300 hover:text-black py-2 px-6 rounded-md">
           <Folders />
         </Link>
       </div>

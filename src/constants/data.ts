@@ -1,26 +1,26 @@
 export const initTestCase: TestCase[] = [
     {
-        name: 'Register with password not match',
+        name: 'Đăng ký tài khoản với mật khẩu không khớp',
         status: 'PENDING',
         code: 'Case01'
     },
     {
-        name: 'Register with correct data',
+        name: 'Đăng ký tài khoản thành công',
         status: 'PENDING',
         code: 'Case02'
     },
     {
-        name: 'Register with existed email',
+        name: 'Đăng ký bằng email đã tồn tại',
         status: 'PENDING',
         code: 'Case03'
     },
     {
-        name: 'Login with invaild username or password',
+        name: 'Đăng nhập bằng tên người dùng hoặc mật khẩu không hợp lệ',
         status: 'PENDING',
         code: 'Case04'
     },
     {
-        name: 'Login with correct username & password',
+        name: 'Đăng nhập thành công',
         status: 'PENDING',
         code: 'Case05'
     }
