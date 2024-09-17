@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={fontSans.className}>
+      <body className={`${fontSans.className} `}>
       <Toaster />
         {children}</body>
     </html>

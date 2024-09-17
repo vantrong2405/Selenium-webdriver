@@ -5,7 +5,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
-
+import { House } from 'lucide-react'
+import { AppWindow , Archive , Folders  } from 'lucide-react';
 export function Header() {
   const [userData, setUserData] = useState<any>()
   useEffect(() => {
@@ -16,69 +17,90 @@ export function Header() {
     setUserData(undefined)
   }
   return (
-    <header className="flex items-center justify-between px-4 py-3 bg-background border-b">
+    <header className="flex items-center justify-between px-4 py-3 bg-black text-white border-b bg-background">
+      {/* Logo and Navigation */}
       <div className="flex items-center gap-4">
-        <Link href="#" className="flex items-center" prefetch={false}>
-          <MountainIcon className="h-6 w-6" />
+        <Link href="#" prefetch={false} className="flex items-center">
+          <img 
+            src="https://w7.pngwing.com/pngs/175/494/png-transparent-selenium-computer-icons-test-automation-software-testing-selenium-angle-text-logo-thumbnail.png" 
+            alt="Acme Inc" 
+            className="w-10 h-10" 
+          />
           <span className="sr-only">Acme Inc</span>
         </Link>
         <nav className="hidden md:flex items-center gap-4">
-          <Link href="/test" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Test Case
+          <Link href="/test" prefetch={false} className="text-sm font-medium hover:underline underline-offset-4">
+            Selenium WebDriver
           </Link>
         </nav>
       </div>
+
+      {/* Icon Links */}
+      <div className="flex items-center justify-between w-44">
+        <Link href="/" className="hover:opacity-80">
+          <House />
+        </Link>
+        <Link href="/test" className="hover:opacity-80">
+          <AppWindow />
+        </Link>
+        <Link href="/test" className="hover:opacity-80">
+          <Archive />
+        </Link>
+        <Link href="/test" className="hover:opacity-80">
+          <Folders />
+        </Link>
+      </div>
+
+      {/* User Actions */}
       <div className="flex items-center gap-4">
         {userData ? (
-          <div>
-                <HoverCard>
-          <HoverCardTrigger asChild>
-            <div className="flex items-center gap-2 cursor-pointer">
-              <Avatar className="h-8 w-8">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                <AvatarFallback>JP</AvatarFallback>
-              </Avatar>
-              <div className="hidden md:block text-sm font-medium">{userData?.name}</div>
-              <Button variant={'destructive'} onClick={onLogout}>
-                  Logout
-                </Button>
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-64">
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-3">
-                <Avatar className="h-12 w-12">
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <HoverCard>
+            <HoverCardTrigger asChild>
+              <div className="flex items-center gap-2 cursor-pointer">
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
                   <AvatarFallback>JP</AvatarFallback>
                 </Avatar>
-                <div className="grid gap-0.5">
-                  <div className="text-sm font-medium">{userData?.name}</div>
-                  <div className="text-xs text-muted-foreground">{userData?.email}</div>
-                </div>
-                
+                <div className="hidden md:block text-sm font-medium">{userData.name}</div>
+                <Button variant="destructive" onClick={onLogout}>
+                  Logout
+                </Button>
               </div>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
-          </div>
+            </HoverCardTrigger>
+            <HoverCardContent className="w-64">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-12 w-12">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                    <AvatarFallback>JP</AvatarFallback>
+                  </Avatar>
+                  <div className="grid gap-0.5">
+                    <div className="text-sm font-medium">{userData.name}</div>
+                    <div className="text-xs text-muted-foreground">{userData.email}</div>
+                  </div>
+                </div>
+              </div>
+            </HoverCardContent>
+          </HoverCard>
         ) : (
           <div>
-            <Link href={'/auth/login'}>
-            <Button variant={'green'}>Login</Button>
+            <Link href="/auth/login">
+              <Button variant="secondary">Login</Button>
             </Link>
-            <Link href={'/auth/register'}>
-            <Button variant={'destructive'} className="ms-2">Register</Button>
+            <Link href="/auth/register">
+              <Button variant="secondary" className="ms-2">Register</Button>
             </Link>
           </div>
         )}
-    
+
+        {/* Mobile Menu Toggle */}
         <Button variant="ghost" size="icon" className="md:hidden">
           <MenuIcon className="h-6 w-6" />
           <span className="sr-only">Toggle menu</span>
         </Button>
       </div>
     </header>
-  )
+  );
 }
 
 function BriefcaseIcon(props: any) {
@@ -181,7 +203,7 @@ function MountainIcon(props: any) {
   return (
     <svg
       {...props}
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg" 
       width="24"
       height="24"
       viewBox="0 0 24 24"
