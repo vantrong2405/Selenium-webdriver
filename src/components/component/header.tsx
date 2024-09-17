@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import { House } from 'lucide-react'
 import { AppWindow , Archive , Folders  } from 'lucide-react';
+import { Store } from 'lucide-react';
 export function Header() {
   const [userData, setUserData] = useState<any>()
   useEffect(() => {
@@ -40,8 +41,8 @@ export function Header() {
         <Link href="/" className="hover:opacity-80">
           <House />
         </Link>
-        <Link href="/test" className="hover:opacity-80">
-          <AppWindow />
+        <Link href="/market" className="hover:opacity-80">
+        <Store />
         </Link>
         <Link href="/test" className="hover:opacity-80">
           <Archive />
