@@ -13,6 +13,5 @@ model User {
   password    String
   phoneNumber String
   email       String    @unique
-  orders      Order[]   // Quan hệ một-nhiều với Order
 }
 

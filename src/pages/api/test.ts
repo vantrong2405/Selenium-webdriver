@@ -34,7 +34,7 @@ async function Case01() {
     } catch (error) {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
-        await driver.quit();
+        // await driver.quit();
     }
 }
 
@@ -50,7 +50,7 @@ async function Case02() {
 
         await slowType(driver, fullnameElement, 'Doan Vo van Trong');
         await slowType(driver, phoneNumberElement, '0357407264');
-        await slowType(driver, emailElement, 'trongdn2401115@gmail.com');
+        await slowType(driver, emailElement, 'trongdn2405@gmail.com');
         await slowType(driver, passwordElement, '123123');
         await slowType(driver, confirmPasswordElement, '123123');
         await driver.findElement(By.css('button[type="submit"]')).click()
@@ -63,7 +63,7 @@ async function Case02() {
     } catch (error) {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
-        await driver.quit();
+        // await driver.quit();
     }
 }
 
@@ -93,7 +93,7 @@ async function Case03() {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
         await driver.sleep(1000);
-        await driver.quit();
+        // await driver.quit();
     }
 }
 
@@ -116,7 +116,7 @@ async function Case04() {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
         await driver.sleep(1000);
-        await driver.quit();
+        // await driver.quit();
     }
 }
 
@@ -139,7 +139,7 @@ async function Case05() {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
         await driver.sleep(1000);
-        await driver.quit();
+        // await driver.quit();
     }
 }
 
@@ -153,9 +153,9 @@ async function Case06() {
         const newPasswordElement = await driver.findElement(By.name('passwordNew'));
         const confirmNewPasswordElement = await driver.findElement(By.name('confirmPasswordNew'));
 
-        await slowType(driver, emailElement, 'trongdn2404@gmail.com'); // Use a valid current password
-        await slowType(driver, currentPasswordElement, 'oldpassword123'); // Use a valid current password
-        await slowType(driver, newPasswordElement, '1231233');
+        await slowType(driver, emailElement, 'trongdn2405@gmail.com'); // Use a valid current password
+        await slowType(driver, currentPasswordElement, '123123'); // Use a valid current password
+        await slowType(driver, newPasswordElement, '1231Error');
         await slowType(driver, confirmNewPasswordElement, '123123');
         await driver.findElement(By.css('button[type="submit"]')).click();
 
@@ -173,7 +173,7 @@ async function Case06() {
     } catch (error) {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
-        await driver.quit();
+        // await driver.quit();
     }
 }
 async function Case07() {
@@ -186,8 +186,8 @@ async function Case07() {
         const newPasswordElement = await driver.findElement(By.name('passwordNew'));
         const confirmNewPasswordElement = await driver.findElement(By.name('confirmPasswordNew'));
 
-        await slowType(driver, emailElement, 'trongdn2404@gmail.com'); // Use a valid current password
-        await slowType(driver, currentPasswordElement, 'oldpassword123'); // Use a valid current password
+        await slowType(driver, emailElement, 'trongdn2405@gmail.com'); // Use a valid current password
+        await slowType(driver, currentPasswordElement, '123123'); // Use a valid current password
         await slowType(driver, newPasswordElement, '123123');
         await slowType(driver, confirmNewPasswordElement, '123123');
         await driver.findElement(By.css('button[type="submit"]')).click();
@@ -206,7 +206,7 @@ async function Case07() {
     } catch (error) {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
-        await driver.quit();
+        // await driver.quit();
     }
 }
 

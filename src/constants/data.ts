@@ -1,6 +1,6 @@
 export const initTestCase: TestCase[] = [
     {
-        name: 'Đăng ký tài khoản với mật khẩu không khớp',
+        name: 'Đăng ký với password và comfirm password không hợp lệ',
         status: 'PENDING',
         code: 'Case01'
     },
