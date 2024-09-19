@@ -18,6 +18,25 @@ export const registerUser = async (userData: any) => {
         console.error('Error:', error)
     }
 }
+export const changePassword = async (userData: any) => {
+    try {
+        const response = await fetch('/api/changePassword', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        const data = await response.json()
+        if (response.ok) {
+            console.log('User created:', data)
+        } else {
+            console.error('Error:', data)
+        }
+    } catch (error) {
+        console.error('Error:', error)
+    }
+}
 
 
 export const getAllUsers = async () => {

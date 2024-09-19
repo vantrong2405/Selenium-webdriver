@@ -8,9 +8,29 @@ generator client {
 }
 
 model User {
-  id          Int    @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   name        String
   password    String
   phoneNumber String
-  email       String @unique
+  email       String    @unique
+  orders      Order[]   // Quan hệ một-nhiều với Order
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  image       String?
+  price       Float
+  orders      OrderProduct[] // Quan hệ nhiều-nhiều với Order thông qua bảng trung gian
+}
+
+
+model OrderProduct {
+  orderId     Int
+  productId   Int
+  order       Order   @relation(fields: [orderId], references: [id])
+  product     Product @relation(fields: [productId], references: [id])
+
+  @@id([orderId, productId]) // Đặt khóa chính composite cho bảng trung gian
 }

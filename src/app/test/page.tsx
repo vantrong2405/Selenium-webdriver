@@ -21,6 +21,8 @@ export default function page() {
   const [testCase, setTestCase] = useState<TestCase[]>(initTestCase);
   const [isExist, setIsExist] = useState(false);
   async function callTestFunc(item: TestCase) {
+    console.log(item);
+    
     callTest(item.code).then(res => {
       if (item.code === "Case02" && isExist) {
         toast({

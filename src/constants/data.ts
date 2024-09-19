@@ -23,7 +23,12 @@ export const initTestCase: TestCase[] = [
         name: 'Đăng nhập thành công',
         status: 'PENDING',
         code: 'Case05'
-    }
+    },
+    {
+        name: 'Đổi mật khẩu thành công',
+        status: 'PENDING',
+        code: 'Case06'
+    },
 ]
 
 export interface TestCase {

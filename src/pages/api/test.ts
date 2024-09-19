@@ -1,6 +1,7 @@
 import { Builder, By, WebDriver, WebElement, until } from 'selenium-webdriver';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+
 async function slowType(driver: WebDriver, element: WebElement, text: string) {
     for (const char of text) {
         await element.sendKeys(char);
@@ -49,7 +50,7 @@ async function Case02() {
 
         await slowType(driver, fullnameElement, 'Doan Vo van Trong');
         await slowType(driver, phoneNumberElement, '0357407264');
-        await slowType(driver, emailElement, 'trongdn2405@gmail.com');
+        await slowType(driver, emailElement, 'trongdn2401115@gmail.com');
         await slowType(driver, passwordElement, '123123');
         await slowType(driver, confirmPasswordElement, '123123');
         await driver.findElement(By.css('button[type="submit"]')).click()
@@ -62,7 +63,7 @@ async function Case02() {
     } catch (error) {
         console.error('Đã có lỗi xảy ra:', error);
     } finally {
-        // await driver.quit();
+        await driver.quit();
     }
 }
 
@@ -142,6 +143,45 @@ async function Case05() {
     }
 }
 
+async function Case06() {
+    const profileString = localStorage.getItem('profile');
+const profile = profileString ? JSON.parse(profileString) : null;
+console.log(profile);
+
+    let driver: WebDriver = await new Builder().forBrowser('chrome').build();
+    try {
+        await driver.get('http://localhost:3000/auth/change-password'); 
+        
+        const emailElement = await driver.findElement(By.name('email'));
+        const currentPasswordElement = await driver.findElement(By.name('currentPassword'));
+        const newPasswordElement = await driver.findElement(By.name('newPassword'));
+        const confirmNewPasswordElement = await driver.findElement(By.name('confirmNewPassword'));
+
+        await slowType(driver, emailElement, profile.email); // Use a valid current password
+        await slowType(driver, currentPasswordElement, 'oldpassword123'); // Use a valid current password
+        await slowType(driver, newPasswordElement, 'newpassword123');
+        await slowType(driver, confirmNewPasswordElement, 'newpassword123');
+        await driver.findElement(By.css('button[type="submit"]')).click();
+
+        let successMessage = until.elementLocated(By.xpath("//*[contains(text(), 'Password changed successfully.')]"));
+        let errorMessage = until.elementLocated(By.xpath("//*[contains(text(), 'Password change failed - Please try again.')]"));
+
+        try {
+            await driver.wait(successMessage, 5000);
+            console.log('Test case passed: Password change successful.');
+        } catch {
+            await driver.wait(errorMessage, 5000);
+            console.log('Test case failed: Password change failed or incorrect message.');
+        }
+
+    } catch (error) {
+        console.error('Đã có lỗi xảy ra:', error);
+    } finally {
+        await driver.quit();
+    }
+}
+
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         switch (req.body) {
@@ -180,6 +220,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             case 'Case05':
                 try {
                     await Case05();
+                    res.status(200).json({ message: 'Success' });
+                } catch (error) {
+                    res.status(500).json({ error: 'Lỗi server' });
+                }
+                break;
+            case 'Case06':
+                try {
+                    await Case06();
                     res.status(200).json({ message: 'Success' });
                 } catch (error) {
                     res.status(500).json({ error: 'Lỗi server' });
