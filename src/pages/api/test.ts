@@ -144,23 +144,52 @@ async function Case05() {
 }
 
 async function Case06() {
-    const profileString = localStorage.getItem('profile');
-const profile = profileString ? JSON.parse(profileString) : null;
-console.log(profile);
-
     let driver: WebDriver = await new Builder().forBrowser('chrome').build();
     try {
         await driver.get('http://localhost:3000/auth/change-password'); 
         
         const emailElement = await driver.findElement(By.name('email'));
-        const currentPasswordElement = await driver.findElement(By.name('currentPassword'));
-        const newPasswordElement = await driver.findElement(By.name('newPassword'));
-        const confirmNewPasswordElement = await driver.findElement(By.name('confirmNewPassword'));
+        const currentPasswordElement = await driver.findElement(By.name('passwordOld'));
+        const newPasswordElement = await driver.findElement(By.name('passwordNew'));
+        const confirmNewPasswordElement = await driver.findElement(By.name('confirmPasswordNew'));
 
-        await slowType(driver, emailElement, profile.email); // Use a valid current password
+        await slowType(driver, emailElement, 'trongdn2404@gmail.com'); // Use a valid current password
         await slowType(driver, currentPasswordElement, 'oldpassword123'); // Use a valid current password
-        await slowType(driver, newPasswordElement, 'newpassword123');
-        await slowType(driver, confirmNewPasswordElement, 'newpassword123');
+        await slowType(driver, newPasswordElement, '1231233');
+        await slowType(driver, confirmNewPasswordElement, '123123');
+        await driver.findElement(By.css('button[type="submit"]')).click();
+
+        let successMessage = until.elementLocated(By.xpath("//*[contains(text(), 'Password changed successfully.')]"));
+        let errorMessage = until.elementLocated(By.xpath("//*[contains(text(), 'Password change failed - Please try again.')]"));
+
+        try {
+            await driver.wait(successMessage, 5000);
+            console.log('Test case passed: Password change successful.');
+        } catch {
+            await driver.wait(errorMessage, 5000);
+            console.log('Test case failed: Password change failed or incorrect message.');
+        }
+
+    } catch (error) {
+        console.error('Đã có lỗi xảy ra:', error);
+    } finally {
+        await driver.quit();
+    }
+}
+async function Case07() {
+    let driver: WebDriver = await new Builder().forBrowser('chrome').build();
+    try {
+        await driver.get('http://localhost:3000/auth/change-password'); 
+        
+        const emailElement = await driver.findElement(By.name('email'));
+        const currentPasswordElement = await driver.findElement(By.name('passwordOld'));
+        const newPasswordElement = await driver.findElement(By.name('passwordNew'));
+        const confirmNewPasswordElement = await driver.findElement(By.name('confirmPasswordNew'));
+
+        await slowType(driver, emailElement, 'trongdn2404@gmail.com'); // Use a valid current password
+        await slowType(driver, currentPasswordElement, 'oldpassword123'); // Use a valid current password
+        await slowType(driver, newPasswordElement, '123123');
+        await slowType(driver, confirmNewPasswordElement, '123123');
         await driver.findElement(By.css('button[type="submit"]')).click();
 
         let successMessage = until.elementLocated(By.xpath("//*[contains(text(), 'Password changed successfully.')]"));
@@ -226,6 +255,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 break;
             case 'Case06':
+                try {
+                    await Case06();
+                    res.status(200).json({ message: 'Success' });
+                } catch (error) {
+                    res.status(500).json({ error: 'Lỗi server' });
+                }
+                break;
+            case 'Case07':
                 try {
                     await Case06();
                     res.status(200).json({ message: 'Success' });

@@ -61,20 +61,34 @@ export default function ChangePasswordPage() {
     };
 
     try {
-        await changePassword(result);
-        toast({
-            title: "Success!",
-            description: "Password changed successfully.",
-            variant: "success",
-        });
-    } catch (error) {
-        setError('Failed to change password');
-        toast({
-            title: "Error!",
-            description: "An error occurred while changing the password.",
-            variant: "destructive",
-        });
-    }
+      const res = await changePassword(result);
+  console.log(res);
+  
+      if (res) {
+          // Assuming `res` is valid, handle success.
+          toast({
+              title: "Success!",
+              description: "Password changed successfully.",
+              variant: "success",
+          });
+      } else {
+          // Handle the case where the response is undefined.
+          setError('Failed to change password');
+          toast({
+              title: "Error!",
+              description: "An error occurred while changing the password.",
+              variant: "destructive",
+          });
+      }
+      
+  } catch (error) {
+      setError('Failed to change password');
+      toast({
+          title: "Error!",
+          description: "An error occurred while changing the password.",
+          variant: "destructive",
+      });
+  }
 };
 
 

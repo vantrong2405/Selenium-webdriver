@@ -9,6 +9,8 @@ import { useEffect, useState } from "react"
 import { House } from 'lucide-react'
 import { AppWindow , Archive , Folders  } from 'lucide-react';
 import { Store } from 'lucide-react';
+import { LockKeyhole } from 'lucide-react';
+
 export function Header() {
   const [userData, setUserData] = useState<any>()
   useEffect(() => {
@@ -45,11 +47,8 @@ export function Header() {
         <Link href="/market" className="hover:opacity-80 hover:bg-slate-300 hover:text-black py-2 px-6 rounded-md">
         <Store />
         </Link>
-        <Link href="/test" className="hover:opacity-80 hover:bg-slate-300 hover:text-black py-2 px-6 rounded-md">
-          <Archive />
-        </Link>
-        <Link href="/test" className="hover:opacity-80 hover:bg-slate-300 hover:text-black py-2 px-6 rounded-md">
-          <Folders />
+        <Link href="/auth/change-password" className="hover:opacity-80 hover:bg-slate-300 hover:text-black py-2 px-6 rounded-md">
+        <LockKeyhole />
         </Link>
       </div>
 

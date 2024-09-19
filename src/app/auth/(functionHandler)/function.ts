@@ -23,20 +23,24 @@ export const changePassword = async (userData: any) => {
         const response = await fetch('/api/changePassword', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(userData)
-        })
-        const data = await response.json()
+            body: JSON.stringify(userData),
+        });
+        
+        const data = await response.json();
         if (response.ok) {
-            console.log('User created:', data)
+            console.log('Đã đổi mật khẩu:', data);
+            return data;  // Trả về dữ liệu ở đây
         } else {
-            console.error('Error:', data)
+            console.error('Lỗi:', data);
+            throw new Error(data.error || 'Đổi mật khẩu thất bại');
         }
     } catch (error) {
-        console.error('Error:', error)
+        console.error('Lỗi:', error);
+        throw error;  // Ném lỗi ra ngoài để bắt ở code gọi hàm
     }
-}
+};
 
 
 export const getAllUsers = async () => {

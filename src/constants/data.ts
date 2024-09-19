@@ -25,9 +25,14 @@ export const initTestCase: TestCase[] = [
         code: 'Case05'
     },
     {
-        name: 'Đổi mật khẩu thành công',
+        name: 'Đổi mật không thành công',
         status: 'PENDING',
         code: 'Case06'
+    },
+    {
+        name: 'Đổi mật khẩu thành công',
+        status: 'PENDING',
+        code: 'Case07'
     },
 ]
 
