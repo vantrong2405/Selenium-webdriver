@@ -264,7 +264,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 break;
             case 'Case07':
                 try {
-                    await Case06();
+                    await Case07();
                     res.status(200).json({ message: 'Success' });
                 } catch (error) {
                     res.status(500).json({ error: 'Lỗi server' });

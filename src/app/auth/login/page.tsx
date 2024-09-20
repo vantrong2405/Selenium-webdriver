@@ -109,7 +109,7 @@ export default function LoginPage() {
                             <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Password</label>
                             <Input
               id="password"
-              type="password"
+              type="text"
               name='password'
               required
               value={formData.password}

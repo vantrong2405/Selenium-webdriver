@@ -132,7 +132,7 @@ export default function ChangePasswordPage() {
                   Old Password
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   name="passwordOld"
                   id="passwordOld"
                   placeholder="••••••••"
@@ -150,7 +150,7 @@ export default function ChangePasswordPage() {
                   New Password
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   name="passwordNew"
                   id="passwordNew"
                   placeholder="••••••••"
@@ -168,7 +168,7 @@ export default function ChangePasswordPage() {
                   Confirm New Password
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   name="confirmPasswordNew"
                   id="confirmPasswordNew"
                   placeholder="••••••••"
