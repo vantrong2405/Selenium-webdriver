@@ -24,6 +24,7 @@ export default function page() {
     console.log(item);
     
     callTest(item.code).then(res => {
+      
       if (item.code === "Case02" && isExist) {
         toast({
           title: "Test Failed",

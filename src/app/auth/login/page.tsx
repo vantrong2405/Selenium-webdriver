@@ -8,7 +8,9 @@ import { Label } from '../../../components/ui/label';
 import { Input } from '../../../components/ui/input';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
+import Image from 'next/image';
+import google from '../../../assets/google.png';
+import github from '../../../assets/github.png';
 export default function LoginPage() {
   const router = useRouter()
   const [formData, setFormData] = useState({
@@ -80,10 +82,10 @@ export default function LoginPage() {
                     </div>
                     <div className="btn-wrapper text-center">
                         <button className="bg-white active:bg-gray-100 text-gray-800 px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs" type="button" style={{ transition: 'all 0.15s ease 0s' }}>
-                            <img alt="Github" className="w-5 mr-1" src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" />Github
+                            <Image alt="Github" className="w-5 mr-1" src={github} />Github
                         </button>
                         <button className="bg-white active:bg-gray-100 text-gray-800 px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs" type="button" style={{ transition: 'all 0.15s ease 0s' }}>
-                            <img alt="Google" className="w-5 mr-1" src="https://t4.ftcdn.net/jpg/03/08/54/37/360_F_308543787_DmPo1IELtKY9hG8E8GlW8KHEsRC7JiDN.jpg" />Google
+                            <Image alt="Google" className="w-5 mr-1" src={google} />Google
                         </button>
                     </div>
                     <hr className="mt-6 border-b-1 border-gray-400" />
