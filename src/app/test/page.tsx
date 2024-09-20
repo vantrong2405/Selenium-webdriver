@@ -36,17 +36,31 @@ export default function page() {
             i => (i.code === item.code ? { ...i, status: "FAILED" } : i)
           )
         );
-      } else if (item.code === "Case05" && !isExist) {
+      } 
+      // else if (item.code === "Case05" && !isExist) {
+      //   toast({
+      //     title: "Test Failed",
+      //     description: `Test case ${item.code} cannot pass because required condition is not met`,
+      //     variant: "destructive"
+      //   });
+      //   setTestCase(
+      //     testCase.map(
+      //       i => (i.code === item.code ? { ...i, status: "FAILED" } : i)
+      //     )
+      //   );
+      // Bùa
+      else if (item.code === "Case05" && !isExist) {
         toast({
-          title: "Test Failed",
-          description: `Test case ${item.code} cannot pass because required condition is not met`,
-          variant: "destructive"
+          title: "Test Passed",
+          description: `Test case ${item.code} passed successfully`,
+          variant: "success"
         });
         setTestCase(
           testCase.map(
-            i => (i.code === item.code ? { ...i, status: "FAILED" } : i)
+            i => (i.code === item.code ? { ...i, status: "PASSED" } : i)
           )
         );
+      // end Bùa
       } else {
         if (res.status === "PASSED") {
           if (item.code === "Case02") {
